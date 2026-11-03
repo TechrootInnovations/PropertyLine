@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# After go-live, set Admin → Settings → SEO → site_url to your real domain.
+# Submit this sitemap URL in Google Search Console as well.
+Sitemap: https://terranexusproperties.com/sitemap.xml

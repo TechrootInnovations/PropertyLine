@@ -1,0 +1,44 @@
+# Terranexus frontend — SPA fallback + security headers
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # SEO: /sitemap.xml is served by the API (always lists every published property)
+  RewriteRule ^sitemap\.xml$ api/sitemap.xml [L]
+
+  # Keep API / uploads / Node app untouched
+  RewriteRule ^api(/|$) - [L]
+  RewriteRule ^uploads(/|$) - [L]
+
+  # Existing files/directories
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # React Router SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Always revalidate the app shell so visitors get the newest build right after a deploy
+  # (hashed /assets files below stay cached for a year — their names change every build)
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Cache hashed Vite assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

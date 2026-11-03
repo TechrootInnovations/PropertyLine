@@ -1,0 +1,97 @@
+/* =============================================================================
+   Admin — phone & tablet refinements (layout only)
+   ============================================================================= */
+
+/* Filter rows stack on phones: keep controls at their natural height */
+@media (max-width: 720px) {
+  .adm-filter-row .adm-search,
+  .adm-filter-row .adm-search--wide,
+  .adm-filter-row .adm-select { flex: 0 0 auto; }
+  .adm-search { height: 44px; }
+  .adm-search--sm { max-width: none; }
+  .adm-main { padding-left: 14px; padding-right: 14px; }
+  .adm-topbar { padding: 0 14px; }
+  .adm-crumbs > span:first-child,
+  .adm-crumbs__sep { display: none; }
+  .adm-card { border-radius: 16px; }
+}
+
+/* Stat cards: two per row on larger phones */
+@media (min-width: 480px) and (max-width: 720px) {
+  .adm-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tables become stacked cards on phones & tablets — every column stays visible */
+@media (max-width: 900px) {
+  .adm-table-wrap { overflow-x: visible; }
+  .adm-table--cards,
+  .adm-table--cards tbody { display: block; width: 100%; }
+  .adm-table--cards thead { display: none; }
+  .adm-table--cards tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--a-border);
+  }
+  .adm-table--cards tbody tr:hover { background: var(--a-surface-2); }
+  .adm-table--cards td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-width: 0;
+    padding: 6px 0;
+    border: 0;
+    text-align: right !important;
+    white-space: normal;
+  }
+  .adm-table--cards td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    max-width: 42%;
+    color: var(--a-faint);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .adm-table--cards td[data-label='']::before { display: none; }
+  .adm-table--cards td[data-label=''] { justify-content: flex-end; }
+  .adm-table--cards td > * { min-width: 0; }
+  .adm-table--cards td .adm-truncate,
+  .adm-table--cards td .adm-contact-cell small { max-width: 100%; }
+  .adm-table--cards .adm-prop-cell { justify-content: flex-end; text-align: left; }
+  .adm-table--cards tr.is-attention td:first-child { box-shadow: none; }
+  .adm-table--cards tr.is-attention { box-shadow: inset 3px 0 0 #ef4444; }
+  .adm-table--cards td.adm-table__empty { display: block; text-align: center !important; }
+  .adm-table--cards td.adm-table__empty::before,
+  .adm-table--cards .adm-table__skeleton td::before { display: none; }
+}
+
+/* Tablets: tighter page padding, two-column forms keep breathing room */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .adm-main { padding-left: 20px; padding-right: 20px; }
+}
+
+/* Drawer sidebar: shadow only while it is open (no grey edge on tablets) */
+@media (max-width: 1024px) {
+  .adm-side { box-shadow: none; visibility: hidden; transition: transform 0.25s ease, visibility 0s linear 0.25s; }
+  .adm-shell.is-drawer-open .adm-side { box-shadow: 20px 0 50px rgba(0, 0, 0, 0.25); visibility: visible; transition: transform 0.25s ease; }
+}
+
+/* Tablets: two record cards per row */
+@media (min-width: 641px) and (max-width: 900px) {
+  .adm-table--cards tbody { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .adm-table--cards tbody tr { border-right: 1px solid var(--a-border); }
+  .adm-table--cards tbody tr:nth-child(2n) { border-right: 0; }
+  .adm-table--cards tbody tr:has(td.adm-table__empty) { grid-column: 1 / -1; border-right: 0; }
+}
+
+/* Touch comfort in the admin (phones & tablets) */
+@media (max-width: 1024px), (hover: none) {
+  .adm-link { min-height: 36px; padding: 6px 0; }
+  .adm-combo__clear { width: 30px; height: 30px; }
+  .adm-login__back { min-height: 40px; display: inline-flex; align-items: center; }
+}

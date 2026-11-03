@@ -1,0 +1,17 @@
+# Terranexus API — PHP router for Hostinger Premium (no Node / Passenger)
+# For Business+ Node/Web Apps, use the Passenger block instead.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /api/
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.php [L]
+</IfModule>
+
+# Deny direct access to env / source dumps
+<FilesMatch "^\.env">
+  Require all denied
+</FilesMatch>

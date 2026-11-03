@@ -1,0 +1,402 @@
+﻿[
+    {
+        "section":  "Basic Information",
+        "field_name":  "Property Title",
+        "field_key":  "property-title",
+        "field_type":  "Text",
+        "required":  true,
+        "sort_order":  1
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Main Category",
+        "field_key":  "main-category",
+        "field_type":  "Select",
+        "required":  true,
+        "sort_order":  2
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Sub-category",
+        "field_key":  "sub-category",
+        "field_type":  "Select",
+        "required":  true,
+        "sort_order":  3
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Listing Purpose",
+        "field_key":  "listing-purpose",
+        "field_type":  "Select: Sale / Rent / Lease",
+        "required":  true,
+        "sort_order":  4
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Property Status",
+        "field_key":  "property-status",
+        "field_type":  "Select",
+        "required":  true,
+        "sort_order":  5
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Property ID / Listing ID",
+        "field_key":  "property-id-listing-id",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  6
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Featured Property",
+        "field_key":  "featured-property",
+        "field_type":  "Yes/No",
+        "required":  false,
+        "sort_order":  7
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Verified Property",
+        "field_key":  "verified-property",
+        "field_type":  "Yes/No",
+        "required":  false,
+        "sort_order":  8
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Description",
+        "field_key":  "description",
+        "field_type":  "Textarea",
+        "required":  true,
+        "sort_order":  9
+    },
+    {
+        "section":  "Basic Information",
+        "field_name":  "Short Description",
+        "field_key":  "short-description",
+        "field_type":  "Textarea",
+        "required":  false,
+        "sort_order":  10
+    },
+    {
+        "section":  "Location",
+        "field_name":  "State",
+        "field_key":  "state",
+        "field_type":  "Select",
+        "required":  true,
+        "sort_order":  11
+    },
+    {
+        "section":  "Location",
+        "field_name":  "District",
+        "field_key":  "district",
+        "field_type":  "Select/Text",
+        "required":  false,
+        "sort_order":  12
+    },
+    {
+        "section":  "Location",
+        "field_name":  "City / Taluka",
+        "field_key":  "city-taluka",
+        "field_type":  "Select/Text",
+        "required":  true,
+        "sort_order":  13
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Area / Locality",
+        "field_key":  "area-locality",
+        "field_type":  "Text",
+        "required":  true,
+        "sort_order":  14
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Sub-locality",
+        "field_key":  "sub-locality",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  15
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Village",
+        "field_key":  "village",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  16
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Address",
+        "field_key":  "address",
+        "field_type":  "Textarea",
+        "required":  true,
+        "sort_order":  17
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Landmark",
+        "field_key":  "landmark",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  18
+    },
+    {
+        "section":  "Location",
+        "field_name":  "PIN Code",
+        "field_key":  "pin-code",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  19
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Google Map Location",
+        "field_key":  "google-map-location",
+        "field_type":  "Map Picker",
+        "required":  false,
+        "sort_order":  20
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Latitude",
+        "field_key":  "latitude",
+        "field_type":  "Decimal",
+        "required":  false,
+        "sort_order":  21
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Longitude",
+        "field_key":  "longitude",
+        "field_type":  "Decimal",
+        "required":  false,
+        "sort_order":  22
+    },
+    {
+        "section":  "Location",
+        "field_name":  "Show Exact Location",
+        "field_key":  "show-exact-location",
+        "field_type":  "Yes/No",
+        "required":  false,
+        "sort_order":  23
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Price",
+        "field_key":  "price",
+        "field_type":  "Number",
+        "required":  true,
+        "sort_order":  24
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Price Type",
+        "field_key":  "price-type",
+        "field_type":  "Select",
+        "required":  false,
+        "sort_order":  25
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Price Negotiable",
+        "field_key":  "price-negotiable",
+        "field_type":  "Yes/No",
+        "required":  false,
+        "sort_order":  26
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Maintenance Charges",
+        "field_key":  "maintenance-charges",
+        "field_type":  "Number",
+        "required":  false,
+        "sort_order":  27
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Other Charges",
+        "field_key":  "other-charges",
+        "field_type":  "Number",
+        "required":  false,
+        "sort_order":  28
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Token / Booking Amount",
+        "field_key":  "token-booking-amount",
+        "field_type":  "Number",
+        "required":  false,
+        "sort_order":  29
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Expected Rental",
+        "field_key":  "expected-rental",
+        "field_type":  "Number",
+        "required":  false,
+        "sort_order":  30
+    },
+    {
+        "section":  "Pricing",
+        "field_name":  "Security Deposit",
+        "field_key":  "security-deposit",
+        "field_type":  "Number",
+        "required":  false,
+        "sort_order":  31
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Main Property Image",
+        "field_key":  "main-property-image",
+        "field_type":  "Image Upload",
+        "required":  true,
+        "sort_order":  32
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Property Gallery",
+        "field_key":  "property-gallery",
+        "field_type":  "Multiple Image Upload",
+        "required":  false,
+        "sort_order":  33
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Video URL",
+        "field_key":  "video-url",
+        "field_type":  "URL",
+        "required":  false,
+        "sort_order":  34
+    },
+    {
+        "section":  "Media",
+        "field_name":  "YouTube Video",
+        "field_key":  "youtube-video",
+        "field_type":  "URL",
+        "required":  false,
+        "sort_order":  35
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Virtual Tour URL",
+        "field_key":  "virtual-tour-url",
+        "field_type":  "URL",
+        "required":  false,
+        "sort_order":  36
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Floor Plan",
+        "field_key":  "floor-plan",
+        "field_type":  "File/Image Upload",
+        "required":  false,
+        "sort_order":  37
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Site Plan",
+        "field_key":  "site-plan",
+        "field_type":  "File/Image Upload",
+        "required":  false,
+        "sort_order":  38
+    },
+    {
+        "section":  "Media",
+        "field_name":  "Brochure PDF",
+        "field_key":  "brochure-pdf",
+        "field_type":  "PDF Upload",
+        "required":  false,
+        "sort_order":  39
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Owner / Seller Name",
+        "field_key":  "owner-seller-name",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  40
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Contact Person",
+        "field_key":  "contact-person",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  41
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Mobile Number",
+        "field_key":  "mobile-number",
+        "field_type":  "Phone",
+        "required":  false,
+        "sort_order":  42
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "WhatsApp Number",
+        "field_key":  "whatsapp-number",
+        "field_type":  "Phone",
+        "required":  false,
+        "sort_order":  43
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Email",
+        "field_key":  "email",
+        "field_type":  "Email",
+        "required":  false,
+        "sort_order":  44
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "RERA Number",
+        "field_key":  "rera-number",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  45
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Agent / Broker Name",
+        "field_key":  "agent-broker-name",
+        "field_type":  "Text",
+        "required":  false,
+        "sort_order":  46
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Agent Contact",
+        "field_key":  "agent-contact",
+        "field_type":  "Phone",
+        "required":  false,
+        "sort_order":  47
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Internal Notes",
+        "field_key":  "internal-notes",
+        "field_type":  "Textarea",
+        "required":  false,
+        "sort_order":  48
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Publish Date",
+        "field_key":  "publish-date",
+        "field_type":  "Date",
+        "required":  false,
+        "sort_order":  49
+    },
+    {
+        "section":  "Contact",
+        "field_name":  "Expiry Date",
+        "field_key":  "expiry-date",
+        "field_type":  "Date",
+        "required":  false,
+        "sort_order":  50
+    }
+]

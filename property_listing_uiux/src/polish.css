@@ -1,0 +1,63 @@
+/* =============================================================================
+   Final polish — readability & touch comfort (visual look unchanged)
+   ============================================================================= */
+
+/* Smallest text on the site never drops below 11px */
+.brand-text span,
+.search-panel label,
+.filters-bar label,
+.field label,
+.hero-stats-band span,
+.stats-strip-inner span,
+.badge,
+.spec span,
+.hero-scroll small { font-size: 11px; }
+
+/* Bigger touch areas on phones & tablets — dots and links keep their size visually */
+@media (max-width: 1024px), (hover: none) {
+  .hero-dot {
+    height: 23px;
+    padding: 10px 0;
+    background-clip: content-box;
+  }
+  .hero-dot-fill { top: 10px; bottom: 10px; }
+  .hero-pause { width: 36px; height: 36px; }
+
+  .quote-dot { position: relative; }
+  .quote-dot::after { content: ''; position: absolute; inset: -14px -3px; }
+
+  .page-banner__crumbs a,
+  .detail-crumbs a { display: inline-flex; align-items: center; min-height: 36px; }
+  .service-tile__link { display: inline-flex; align-items: center; min-height: 40px; }
+  .legal-links a { display: inline-block; padding: 8px 0; }
+  .footer-credit a { display: inline-block; padding: 6px 0; }
+}
+
+/* Property cards & hero labels */
+.prop-card .type-pill,
+.prop-specs span,
+.hero .hero-kicker,
+.hero-scroll small { font-size: 11px; }
+
+/* Header: uploaded logo shown on its own, large and clear (the PNG has built-in padding) */
+.brand-logo.brand-logo--solo {
+  height: 100px;
+  max-width: 240px;
+  margin-block: -18px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+}
+@media (max-width: 768px) {
+  .brand-logo.brand-logo--solo { height: 80px; max-width: 180px; margin-block: -12px; }
+}
+
+/* About page: full owner / story photo, natural height (never cropped) */
+.about-story__media.about-story__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-width: min(100%, 480px);
+  justify-self: center;
+  align-self: start;
+  object-fit: contain;
+}

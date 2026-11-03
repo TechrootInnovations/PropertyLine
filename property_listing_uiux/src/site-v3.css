@@ -1,0 +1,339 @@
+/* =============================================================================
+   Site v3 — wider layout, photo banners for inner pages, spotlight listings,
+   richer contact page. Visual only.
+   ============================================================================= */
+
+/* ——— Use more of large screens (less empty side margin) ——— */
+.container { width: min(1400px, calc(100% - 3rem)); }
+@media (max-width: 640px) {
+  .container { width: calc(100% - 1.5rem); }
+}
+
+/* ——— Inner page photo banner ——— */
+.public-shell.is-inner .page-hero::after { display: none; }
+.page-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: calc(var(--header-h) + 0.75rem) 0 clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(2.6rem, 6vw, 4.8rem) clamp(1.4rem, 4vw, 3.2rem);
+  border-radius: 28px;
+  min-height: clamp(260px, 30vw, 360px);
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--pv-secondary) 18%, transparent);
+}
+.page-banner__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.08);
+  animation: bannerKenBurns 22s ease-in-out infinite alternate;
+}
+@keyframes bannerKenBurns {
+  from { transform: scale(1.08) translate(0, 0); }
+  to { transform: scale(1.18) translate(-2%, -2%); }
+}
+.page-banner__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 88%, transparent) 0%, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 62%, transparent) 45%, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 15%, transparent) 100%),
+    linear-gradient(0deg, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 55%, transparent), transparent 55%);
+}
+.page-banner__orb {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.page-banner__orb--a {
+  width: 340px;
+  height: 340px;
+  right: 8%;
+  top: -120px;
+  border: 1px solid rgba(243, 223, 182, 0.35);
+  box-shadow: inset 0 0 0 36px rgba(243, 223, 182, 0.05);
+  animation: bannerSpin 30s linear infinite;
+}
+.page-banner__orb--b {
+  width: 280px;
+  height: 280px;
+  left: 35%;
+  bottom: -170px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--pv-accent) 35%, transparent), transparent 70%);
+  animation: bannerDrift 14s ease-in-out infinite;
+}
+@keyframes bannerSpin { to { transform: rotate(360deg); } }
+@keyframes bannerDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(60px, -30px); }
+}
+.page-banner__inner { position: relative; max-width: 760px; }
+.page-banner__crumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+.page-banner__crumbs a { color: rgba(255, 255, 255, 0.82); transition: color 0.2s; }
+.page-banner__crumbs a:hover { color: var(--pv-accent-soft); }
+.page-banner__crumbs strong { color: #fff; font-weight: 600; }
+.page-banner .eyebrow { color: var(--pv-accent-soft); }
+.page-banner .eyebrow::before { background: var(--pv-accent); }
+.page-banner__title-mask { display: block; overflow: hidden; padding-bottom: 0.1em; }
+.page-banner h1 {
+  margin: 0.35rem 0 0;
+  color: #fff;
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.page-banner .page-hero-lead {
+  max-width: 54ch;
+  margin-top: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 400;
+}
+@media (max-width: 640px) {
+  .page-banner { border-radius: 20px; min-height: 230px; padding: 2rem 1.25rem; }
+  .page-banner__orb--a { width: 200px; height: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-banner__bg, .page-banner__orb--a, .page-banner__orb--b { animation: none; }
+}
+
+/* ——— Spotlight listings (1–2 properties fill the row) ——— */
+.spotlight-grid { display: grid; gap: clamp(1rem, 2vw, 1.5rem); }
+.spotlight-grid.is-1 { grid-template-columns: minmax(0, 1fr); }
+.spotlight-grid.is-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.spotlight-item { min-width: 0; }
+
+.prop-card--spotlight { flex-direction: row; min-height: 400px; }
+.prop-card--spotlight .prop-media3d {
+  flex: 0 0 58%;
+  aspect-ratio: auto !important;
+  min-height: 400px;
+}
+.spotlight-grid.is-2 .prop-card--spotlight .prop-media3d { flex-basis: 50%; }
+.prop-card--spotlight .prop-body {
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  justify-content: center;
+  gap: 0.55rem;
+}
+.prop-card--spotlight .prop-top { margin-bottom: 0.2rem; }
+.prop-card--spotlight .price { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.prop-card--spotlight .prop-body h3 {
+  font-family: var(--pv-font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.2;
+}
+.prop-card--spotlight .prop-desc {
+  margin: 0;
+  color: var(--pv-muted);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.prop-card--spotlight .meta-row { font-size: 0.92rem; }
+.prop-card--spotlight .prop-specs { margin: 0.6rem 0 1rem; padding: 1rem 0.5rem; }
+.prop-card--spotlight .prop-specs b { font-size: 1.1rem; }
+.prop-card--spotlight .card-actions { margin-top: 0; }
+.prop-card--spotlight .card-actions .btn { padding: 0.95rem 0.75rem; }
+.prop-card--spotlight .quick-view { display: none; }
+
+@media (max-width: 1100px) {
+  .spotlight-grid.is-2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 820px) {
+  .prop-card--spotlight { flex-direction: column; min-height: 0; }
+  .prop-card--spotlight .prop-media3d { flex: none; min-height: 0; aspect-ratio: 16 / 10 !important; }
+}
+
+/* ——— Contact page ——— */
+.contact-info-card h3 { font-size: 1.55rem; margin-bottom: 1rem; }
+.contact-lines { list-style: none; margin: 0 0 1.25rem; padding: 0; display: grid; gap: 0.85rem; }
+.contact-lines li { display: flex; align-items: flex-start; gap: 0.85rem; min-width: 0; }
+.contact-lines li > span:last-child { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; color: var(--pv-heading); font-weight: 500; }
+.contact-lines small {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pv-muted);
+}
+.contact-lines__icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: var(--pv-primary-ink);
+  background: color-mix(in srgb, var(--pv-primary) 10%, var(--pv-paper));
+}
+.contact-visit {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 22px;
+  color: #fff;
+  background:
+    linear-gradient(0deg, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 92%, transparent) 10%, color-mix(in srgb, color-mix(in srgb, var(--pv-secondary) 80%, black) 35%, transparent) 70%),
+    url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=70') center / cover;
+  box-shadow: 0 24px 50px color-mix(in srgb, var(--pv-secondary) 16%, transparent);
+}
+.contact-visit::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  right: -80px;
+  top: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 223, 182, 0.35);
+  animation: bannerSpin 26s linear infinite;
+}
+.contact-visit__copy { padding: clamp(1.4rem, 3vw, 2rem); }
+.contact-visit .eyebrow { color: var(--pv-accent-soft); }
+.contact-visit h3 {
+  margin: 0.5rem 0 0.4rem;
+  font-family: var(--pv-font-display);
+  font-weight: 500;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+}
+.contact-visit p { margin: 0 0 1.1rem; color: rgba(255, 255, 255, 0.8); max-width: 52ch; line-height: 1.65; }
+.contact-visit__stats { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.contact-visit__stats span {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0.95rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+}
+.contact-visit__stats strong { font-size: 0.95rem; }
+.contact-visit__stats small { font-size: 0.72rem; color: rgba(255, 255, 255, 0.72); }
+
+/* Let the 3D photo overscan its frame (global img max-width was leaving an edge strip) */
+.media3d-img { max-width: none; }
+
+/* Reviews without a photo show the reviewer's initials instead of a stock face */
+.testi-user .testi-initials {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pv-primary), var(--pv-primary-deep));
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px color-mix(in srgb, var(--pv-accent) 60%, transparent);
+}
+
+/* ——— Footer v3: social, RERA, legal links, developer credit ——— */
+.footer-grid--rich { grid-template-columns: 1.3fr 0.8fr 0.8fr 1.1fr; }
+.footer-tagline { max-width: 300px; line-height: 1.65; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.1rem 0 0.4rem; }
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+.site-footer .footer-social a:hover { background: var(--pv-accent); color: #1a1400; transform: translateY(-3px); }
+.footer-rera {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  background: color-mix(in srgb, var(--pv-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pv-accent) 30%, transparent);
+}
+.footer-rera svg { color: var(--pv-accent); }
+.footer-rera strong { color: #fff; letter-spacing: 0.02em; }
+.footer-contact p { display: flex; align-items: flex-start; gap: 0.55rem; }
+.footer-contact svg { flex: 0 0 auto; margin-top: 0.25rem; color: var(--pv-accent); }
+.footer-contact span, .footer-contact a { overflow-wrap: anywhere; }
+.footer-bottom--rich {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem 1.5rem;
+}
+.footer-legal { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.footer-credit strong { color: var(--pv-accent-soft); font-weight: 600; }
+.footer-credit a { color: inherit; text-decoration: none; }
+.footer-credit a:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 980px) {
+  .footer-grid--rich { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-grid--rich { grid-template-columns: 1fr; }
+  .footer-bottom--rich { flex-direction: column; align-items: flex-start; }
+}
+
+/* Keep footer text clear of the floating WhatsApp / Call buttons */
+.footer-bottom--rich { padding-right: 84px; }
+@media (max-width: 560px) {
+  .footer-bottom--rich { padding-right: 72px; padding-bottom: 1rem; }
+}
+
+/* ——— Footer: phones ——— */
+@media (max-width: 640px) {
+  .site-footer { padding-top: 2.25rem; }
+  .footer-grid--rich {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.25rem;
+  }
+  .footer-grid--rich > .footer-brand,
+  .footer-grid--rich > .footer-contact { grid-column: 1 / -1; }
+  .footer-brand { padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .footer-tagline { max-width: none; }
+  .site-footer h4 { margin-bottom: 0.6rem; }
+  .site-footer p { margin-bottom: 0.55rem; }
+  .footer-contact {
+    padding: 1.1rem 1.1rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .footer-bottom--rich {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding-right: 0;
+    padding-bottom: 6.5rem; /* room so the floating WhatsApp / Call buttons never cover the credit */
+  }
+  .footer-legal { justify-content: center; gap: 0.5rem 1.1rem; }
+  .footer-credit { line-height: 1.6; }
+}

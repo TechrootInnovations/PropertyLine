@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.production
+!.env.example
+!.env.production.example
+dist/
+_cpanel_deploy/release/
+*.log
